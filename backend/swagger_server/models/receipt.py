@@ -7,7 +7,6 @@ from typing import List, Dict  # noqa: F401
 
 from swagger_server.models.base_model_ import Model
 from swagger_server import util
-
 import re
 
 
@@ -50,6 +49,7 @@ class Receipt(Model):
             '_date': str,
             'currency': str,
             'vat': float,
+            'receipt_items': List[ReceiptItem],
             'status': object
         }
 

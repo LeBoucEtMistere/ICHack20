@@ -5,20 +5,18 @@ from swagger_server.models.receipt import Receipt  # noqa: E501
 from swagger_server.models.user import User  # noqa: E501
 from swagger_server import util
 
+from swagger_server.service.account_management import get_user_info
+from swagger_server.service.transaction_management import reimburse
+from flask import jsonify
 
-def add_receipt(searchString=None, skip=None, limit=None):  # noqa: E501
+
+def add_receipt():  # noqa: E501
     """adds an inventory item
 
     Adds an receipt to the system # noqa: E501
 
-    :param searchString: pass an optional search string for looking up inventory
-    :type searchString: str
-    :param skip: number of records to skip for pagination
-    :type skip: int
-    :param limit: maximum number of records to return
-    :type limit: int
 
-    :rtype: List[Receipt]
+    :rtype: None
     """
     return 'do some magic!'
 
@@ -31,9 +29,10 @@ def get_info(id):  # noqa: E501
     :param id: the user&#39;s id
     :type id: str
 
-    :rtype: List[User]
+    :rtype: User
     """
-    return 'do some magic!'
+    user_info = get_user_info(id)
+    return jsonify(user_info)
 
 
 def get_receipts():  # noqa: E501

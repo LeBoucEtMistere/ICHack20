@@ -36,9 +36,7 @@ paths:
         "200":
           description: "search results matching criteria"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/User"
+            $ref: "#/definitions/User"
         "400":
           description: "bad input parameter"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
@@ -51,34 +49,10 @@ paths:
       - "image/png"
       produces:
       - "application/json"
-      parameters:
-      - name: "searchString"
-        in: "query"
-        description: "pass an optional search string for looking up inventory"
-        required: false
-        type: "string"
-      - name: "skip"
-        in: "query"
-        description: "number of records to skip for pagination"
-        required: false
-        type: "integer"
-        minimum: 0
-        format: "int32"
-      - name: "limit"
-        in: "query"
-        description: "maximum number of records to return"
-        required: false
-        type: "integer"
-        maximum: 50
-        minimum: 0
-        format: "int32"
+      parameters: []
       responses:
         "200":
-          description: "search results matching criteria"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Receipt"
+          description: "pic added"
         "400":
           description: "bad input parameter"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
@@ -147,7 +121,7 @@ definitions:
         example: "05382A574B8293C"
       total:
         type: "number"
-        example: 120.0
+        example: 120
       receiptHolder:
         type: "string"
         example: "Ben"
@@ -168,7 +142,7 @@ definitions:
         example: "EUR"
       VAT:
         type: "number"
-        example: 22.2
+        example: 22.199999999999999289457264239899814128875732421875
       receiptItems:
         type: "array"
         items:
@@ -176,14 +150,14 @@ definitions:
       status: {}
     example:
       date: "01-01-2020"
-      total: 120.0
+      total: 120
       receiver: "Ben's company"
       receiptItems:
       - itemName: "fries"
-        price: 120.0
+        price: 120
       - itemName: "fries"
-        price: 120.0
-      VAT: 22.2
+        price: 120
+      VAT: 22.199999999999999289457264239899814128875732421875
       receiptHolder: "Ben"
       emmiter: "The restaurant of Alex"
       currency: "EUR"
@@ -196,14 +170,14 @@ definitions:
         example: "fries"
       price:
         type: "number"
-        example: 120.0
+        example: 120
     example:
       itemName: "fries"
-      price: 120.0
+      price: 120
   User:
     properties:
       balance:
         type: "number"
-        example: 344.0
+        example: 344
     example:
-      balance: 344.0
+      balance: 344

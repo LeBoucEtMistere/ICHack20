@@ -19,6 +19,29 @@ tags:
 schemes:
 - "https"
 paths:
+  /users/{id}:
+    get:
+      summary: "get info on one user"
+      description: "get info on one user"
+      operationId: "get_info"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "the user's id"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "search results matching criteria"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
   /pics:
     post:
       summary: "adds an inventory item"
@@ -26,23 +49,6 @@ paths:
       operationId: "add_receipt"
       consumes:
       - "image/png"
-      produces:
-      - "application/json"
-      parameters: []
-      responses:
-        "201":
-          description: "item created"
-        "400":
-          description: "invalid input, object invalid"
-        "409":
-          description: "an existing item already exists"
-      x-swagger-router-controller: "swagger_server.controllers.default_controller"
-  /receipts:
-    get:
-      summary: "return lists of receipts"
-      description: "By passing in the appropriate options, you can search for\navailable\
-        \ inventory in the system\n"
-      operationId: "get_receipts"
       produces:
       - "application/json"
       parameters:
@@ -66,6 +72,25 @@ paths:
         maximum: 50
         minimum: 0
         format: "int32"
+      responses:
+        "200":
+          description: "search results matching criteria"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Receipt"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /receipts:
+    get:
+      summary: "return lists of receipts"
+      description: "By passing in the appropriate options, you can search for\navailable\
+        \ inventory in the system\n"
+      operationId: "get_receipts"
+      produces:
+      - "application/json"
+      parameters: []
       responses:
         "200":
           description: "search results matching criteria"
@@ -175,3 +200,10 @@ definitions:
     example:
       itemName: "fries"
       price: 120.0
+  User:
+    properties:
+      balance:
+        type: "number"
+        example: 344.0
+    example:
+      balance: 344.0

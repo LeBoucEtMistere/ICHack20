@@ -1,5 +1,7 @@
 vault-client/
 vault_client/
+swagger_server/vault_client/
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

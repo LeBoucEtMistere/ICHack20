@@ -13,4 +13,5 @@ def main():
 
 
 if __name__ == '__main__':
+    # create account from account_management.py
     main()

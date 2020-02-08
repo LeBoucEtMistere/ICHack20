@@ -21,13 +21,10 @@ if __name__ == '__main__':
             ['95191861583545753', '35294866593545759'])
     except:
         customers = initialize_customers()
-        print(customers)
-        for customer in customers:
-            customers_array.append(customer)
+        customers_array = get_customers(
+            ['95191861583545753', '35294866593545759'])
     try:
-        get_current_accounts(['john_wick_001', 'company_evil_001'])
+        get_current_accounts(['john_wick_003', 'company_evil_003'])
     except:
-        print(customers_array)
         accounts = initialize_current_accounts(customers_array)
-        print(accounts)
     main()

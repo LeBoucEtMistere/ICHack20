@@ -17,6 +17,7 @@ def initialize_customers():
         email_address='company@notevil.com',
         mobile_phone_number='07979799799'
     )
+
     employee = client.customers.create_customer(
         customer_id='35294866593545759',
         title=CustomerTitle.CUSTOMER_TITLE_MR,
@@ -28,16 +29,25 @@ def initialize_customers():
         email_address='j.wick@headshot.com',
         mobile_phone_number='07878788788'
     )
-    return [company, employee]
 
 
 def initialize_current_accounts(array_of_customers):
     current_accounts = []
-    for customer in array_of_customers:
+    for customer in array_of_customers.values():
+        account_id = f'{customer.first_name.lower()}_{customer.last_name.lower()}_003'
         current_accounts.append(client.accounts.create_account(
-            account_id=f'{customer.first_name.lower()}_{customer.last_name.lower()}_001',
-            product_id='current_account_001',
+            account_id=account_id,
+            product_id='current_account',
             stakeholder_customer_ids=[customer.id_]))
+        if customer.id_ == '95191861583545753':
+            client.accounts.create_account(
+                product_id='a_small_loan',
+                stakeholder_customer_ids=[
+                    customer.id_],
+                instance_param_vals={
+                    "deposit_account": account_id}
+            )
+
     return current_accounts
 
 

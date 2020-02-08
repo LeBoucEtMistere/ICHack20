@@ -5,6 +5,10 @@ from swagger_server.models.receipt import Receipt  # noqa: E501
 from swagger_server.models.user import User  # noqa: E501
 from swagger_server import util
 
+from swagger_server.service.account_management import get_user_info
+from swagger_server.service.transaction_management import reimburse
+from flask import jsonify
+
 
 def add_receipt():  # noqa: E501
     """adds an inventory item
@@ -27,7 +31,8 @@ def get_info(id):  # noqa: E501
 
     :rtype: User
     """
-    return 'do some magic!'
+    user_info = get_user_info(id)
+    return jsonify(user_info)
 
 
 def get_receipts():  # noqa: E501

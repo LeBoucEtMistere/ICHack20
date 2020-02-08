@@ -60,3 +60,17 @@ def get_current_accounts(array_of_ids):
     for id in array_of_ids:
         current_accounts.append(client.accounts.get_account(id))
     return current_accounts
+
+
+def get_user_info(id):
+    customer = client.customers.get_customer(id)
+    accounts = client.accounts.list_accounts_for_customer(id)
+    balances = [acc.account_balance for acc in accounts]
+    info_dict = {
+        "firstName": customer.first_name,
+        "lastName": customer.last_name,
+        "phoneNumber": customer.mobile_phone_number,
+        "accounts": accounts,
+        "totalBalance": sum(balances)
+    }
+    return info_dict

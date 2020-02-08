@@ -1,0 +1,14 @@
+{
+  "_": "WARNING: This file contains API Keys. Do not commit this file to version control.",
+  "user": "user1",
+  "basic_auth": {
+    "username": "example_username",
+    "password": "example_password"
+  },
+  "service_account_token": "example_token",
+  "core_api_url": "https://core-api.ichack.tmachine.io",
+  "xpl_api_url": "https://xpl.ichack.tmachine.io",
+  "payments_hub_api_url": "https://payments-hub-api.ichack.tmachine.io",
+  "kafka_url": "https://kafka.ichack.tmachine.io",
+  "vault_cidr": "0.0.0.0"
+}

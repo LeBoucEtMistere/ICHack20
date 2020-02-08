@@ -9,10 +9,10 @@ db = firestore.client()
 
 def add_receipt():
     # example
-    # doc_ref = db.collection(u'users').document(u'alovelace')
-    # doc_ref.set({
-    #     u'first': u'Ada',
-    #     u'last': u'Lovelace',
-    #     u'born': 1815
-    # })
+    doc_ref = db.collection(u'users').document(u'alovelace')
+    doc_ref.set({
+        u'first': u'Ada',
+        u'last': u'Lovelace',
+        u'born': 1815
+    })
     return

@@ -6,19 +6,13 @@ from swagger_server.models.user import User  # noqa: E501
 from swagger_server import util
 
 
-def add_receipt(searchString=None, skip=None, limit=None):  # noqa: E501
+def add_receipt():  # noqa: E501
     """adds an inventory item
 
     Adds an receipt to the system # noqa: E501
 
-    :param searchString: pass an optional search string for looking up inventory
-    :type searchString: str
-    :param skip: number of records to skip for pagination
-    :type skip: int
-    :param limit: maximum number of records to return
-    :type limit: int
 
-    :rtype: List[Receipt]
+    :rtype: None
     """
     return 'do some magic!'
 
@@ -31,7 +25,7 @@ def get_info(id):  # noqa: E501
     :param id: the user&#39;s id
     :type id: str
 
-    :rtype: List[User]
+    :rtype: User
     """
     return 'do some magic!'
 

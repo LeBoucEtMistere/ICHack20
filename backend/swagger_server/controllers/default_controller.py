@@ -7,7 +7,8 @@ from swagger_server import util
 
 from swagger_server.service.account_management import get_user_info
 from swagger_server.service.transaction_management import reimburse
-from flask import jsonify
+from swagger_server.service.receipt_management import add_receipt_storage, get_receipt_from_storage
+from flask import jsonify, request
 
 
 def add_receipt():  # noqa: E501
@@ -18,6 +19,8 @@ def add_receipt():  # noqa: E501
 
     :rtype: None
     """
+    file = request.files['file']
+    add_receipt_storage(file)
     return 'do some magic!'
 
 
@@ -70,3 +73,7 @@ def validate_receipt(receiptId):  # noqa: E501
     :rtype: None
     """
     return 'do some magic!'
+
+
+def get_pictures_of_receipts_by_id(id):
+    return 'hello world'

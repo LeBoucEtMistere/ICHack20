@@ -110,7 +110,7 @@ paths:
         in: "path"
         description: "get pictures of receipts"
         required: true
-        type: "integer"
+        type: "string"
       responses:
         "200":
           description: "search results matching criteria"

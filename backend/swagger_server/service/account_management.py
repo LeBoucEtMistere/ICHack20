@@ -6,7 +6,8 @@ client = TMVaultClient('swagger_server/vault_client/data/vault-config.json')
 
 
 def initialize_customers():
-    company = client.customers.create_customer(
+    # company entity
+    client.customers.create_customer(
         customer_id='95191861583545753',
         title=CustomerTitle.CUSTOMER_TITLE_MR,
         first_name='Company',
@@ -17,8 +18,8 @@ def initialize_customers():
         email_address='company@notevil.com',
         mobile_phone_number='07979799799'
     )
-
-    employee = client.customers.create_customer(
+    # client entity
+    client.customers.create_customer(
         customer_id='35294866593545759',
         title=CustomerTitle.CUSTOMER_TITLE_MR,
         first_name='John',
@@ -65,12 +66,14 @@ def get_current_accounts(array_of_ids):
 def get_user_info(id):
     customer = client.customers.get_customer(id)
     accounts = client.accounts.list_accounts_for_customer(id)
-    balances = [acc.account_balance for acc in accounts]
+    stonks = []
+    for account in accounts:
+        stonks.extend(account.stonks_balances.values())
+    balances = [stonk.amount for stonk in stonks]
     info_dict = {
         "firstName": customer.first_name,
         "lastName": customer.last_name,
         "phoneNumber": customer.mobile_phone_number,
-        "accounts": accounts,
         "totalBalance": sum(balances)
     }
     return info_dict

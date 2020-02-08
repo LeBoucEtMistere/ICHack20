@@ -1,0 +1,177 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a simple API"
+  version: "1.0.0"
+  title: "Simple Inventory API"
+  contact:
+    email: "you@your-company.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/ICHack/ICHack20/1.0.0"
+tags:
+- name: "admins"
+  description: "Secured Admin-only calls"
+- name: "developers"
+  description: "Operations available to regular developers"
+schemes:
+- "https"
+paths:
+  /pics:
+    post:
+      summary: "adds an inventory item"
+      description: "Adds an receipt to the system"
+      operationId: "add_receipt"
+      consumes:
+      - "image/png"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "201":
+          description: "item created"
+        "400":
+          description: "invalid input, object invalid"
+        "409":
+          description: "an existing item already exists"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /receipts:
+    get:
+      summary: "return lists of receipts"
+      description: "By passing in the appropriate options, you can search for\navailable\
+        \ inventory in the system\n"
+      operationId: "get_receipts"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "searchString"
+        in: "query"
+        description: "pass an optional search string for looking up inventory"
+        required: false
+        type: "string"
+      - name: "skip"
+        in: "query"
+        description: "number of records to skip for pagination"
+        required: false
+        type: "integer"
+        minimum: 0
+        format: "int32"
+      - name: "limit"
+        in: "query"
+        description: "maximum number of records to return"
+        required: false
+        type: "integer"
+        maximum: 50
+        minimum: 0
+        format: "int32"
+      responses:
+        "200":
+          description: "search results matching criteria"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Receipt"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /receipts/{id}:
+    get:
+      summary: "return lists of receipts"
+      description: "By passing in the appropriate options, you can search for\navailable\
+        \ inventory in the system\n"
+      operationId: "get_receipts_by_id"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "get a particular receit"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "search results matching criteria"
+          schema:
+            $ref: "#/definitions/Receipt"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /validateReceipt/{receiptId}:
+    put:
+      summary: "validate a receipt"
+      operationId: "validate_receipt"
+      parameters:
+      - name: "receiptId"
+        in: "path"
+        description: "receipt Id"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "search results matching criteria"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+definitions:
+  Receipt:
+    properties:
+      id:
+        type: "string"
+        example: "05382A574B8293C"
+      total:
+        type: "number"
+        example: 120.0
+      receiptHolder:
+        type: "string"
+        example: "Ben"
+      emmiter:
+        type: "string"
+        example: "The restaurant of Alex"
+      receiver:
+        type: "string"
+        example: "Ben's company"
+      date:
+        type: "string"
+        example: "01-01-2020"
+        pattern: "^\\d{2}-\\d{2}-\\d{4}$"
+        x-regex: "^\\\\d{2}-\\\\d{2}-\\\\d{4}$"
+        x-modifiers: []
+      currency:
+        type: "string"
+        example: "EUR"
+      VAT:
+        type: "number"
+        example: 22.2
+      receiptItems:
+        type: "array"
+        items:
+          $ref: "#/definitions/ReceiptItem"
+      status: {}
+    example:
+      date: "01-01-2020"
+      total: 120.0
+      receiver: "Ben's company"
+      receiptItems:
+      - itemName: "fries"
+        price: 120.0
+      - itemName: "fries"
+        price: 120.0
+      VAT: 22.2
+      receiptHolder: "Ben"
+      emmiter: "The restaurant of Alex"
+      currency: "EUR"
+      id: "05382A574B8293C"
+      status: ""
+  ReceiptItem:
+    properties:
+      itemName:
+        type: "string"
+        example: "fries"
+      price:
+        type: "number"
+        example: 120.0
+    example:
+      itemName: "fries"
+      price: 120.0

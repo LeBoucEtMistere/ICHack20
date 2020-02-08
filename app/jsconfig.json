@@ -1,8 +1,0 @@
-{
-  "typeAcquisition": {
-    "enable": true
-  },
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true
-  }
-}

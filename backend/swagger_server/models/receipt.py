@@ -7,6 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from swagger_server.models.base_model_ import Model
 from swagger_server import util
+
 import re
 
 
@@ -16,7 +17,7 @@ class Receipt(Model):
     Do not edit the class manually.
     """
 
-    def __init__(self, id: str = None, total: float = None, receipt_holder: str = None, emmiter: str = None, receiver: str = None, _date: str = None, currency: str = None, vat: float = None, receipt_items=None, status: object = None):  # noqa: E501
+    def __init__(self, id: str=None, total: float=None, receipt_holder: str=None, emmiter: str=None, receiver: str=None, _date: str=None, currency: str=None, vat: float=None, receipt_items=None, status: object=None):  # noqa: E501
         """Receipt - a model defined in Swagger
 
         :param id: The id of this Receipt.  # noqa: E501

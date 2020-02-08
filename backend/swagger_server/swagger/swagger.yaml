@@ -97,6 +97,26 @@ paths:
         "400":
           description: "bad input parameter"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /receipts/pics/{id}:
+    get:
+      summary: "returns pictures of receipts"
+      description: "By passing in the appropriate options, you can search for\navailable\
+        \ inventory in the system\n"
+      operationId: "get_pictures_of_receipts_by_id"
+      produces:
+      - "image/png"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "get pictures of receipts"
+        required: true
+        type: "integer"
+      responses:
+        "200":
+          description: "search results matching criteria"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
   /validateReceipt/{receiptId}:
     put:
       summary: "validate a receipt"

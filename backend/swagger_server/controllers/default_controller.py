@@ -5,9 +5,9 @@ from swagger_server.models.receipt import Receipt  # noqa: E501
 from swagger_server.models.user import User  # noqa: E501
 from swagger_server import util
 
-from swagger_server.service.account_management import get_user_info
-from swagger_server.service.transaction_management import reimburse
-from swagger_server.service.receipt_management import add_receipt_storage, get_receipt_from_storage
+from swagger_server.service import account_management as am
+from swagger_server.service import transaction_management as tm
+from swagger_server.service import receipt_management as rm
 from flask import jsonify, request
 
 
@@ -19,9 +19,8 @@ def add_receipt():  # noqa: E501
 
     :rtype: None
     """
-    file = request.files['file']
-    add_receipt_storage(file)
-    return 'do some magic!'
+    doc_dict = rm.add_receipt_storage(request)
+    return jsonify(doc_dict)
 
 
 def get_info(id):  # noqa: E501
@@ -34,7 +33,7 @@ def get_info(id):  # noqa: E501
 
     :rtype: User
     """
-    user_info = get_user_info(id)
+    user_info = am.get_user_info(id)
     return jsonify(user_info)
 
 
@@ -46,7 +45,8 @@ def get_receipts():  # noqa: E501
 
     :rtype: List[Receipt]
     """
-    return 'do some magic!'
+    doc_dict = rm.get_all_receipts()
+    return jsonify(doc_dict)
 
 
 def get_receipts_by_id(id):  # noqa: E501
@@ -59,7 +59,8 @@ def get_receipts_by_id(id):  # noqa: E501
 
     :rtype: Receipt
     """
-    return 'do some magic!'
+    doc_dict = rm.get_receipt(id)
+    return jsonify(doc_dict)
 
 
 def validate_receipt(receiptId):  # noqa: E501
@@ -72,8 +73,8 @@ def validate_receipt(receiptId):  # noqa: E501
 
     :rtype: None
     """
-    return 'do some magic!'
+    return rm.validate_receipt(receiptId)
 
 
 def get_pictures_of_receipts_by_id(id):
-    return 'hello world'
+    return rm.get_receipt_from_storage(id)

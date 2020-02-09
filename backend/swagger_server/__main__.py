@@ -4,7 +4,6 @@ import connexion
 
 from swagger_server import encoder
 from swagger_server.service.account_management import initialize_customers, initialize_current_accounts, get_customers, get_current_accounts
-from swagger_server.repository.db_client import add_receipt
 
 
 def main():
@@ -15,7 +14,6 @@ def main():
 
 
 if __name__ == '__main__':
-    add_receipt()
     # first check if customers and accounts exist => if not, then create
     customers_array = []
     try:

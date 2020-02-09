@@ -10,8 +10,8 @@ def add_receipt_storage(request):
     file = request.files['file']
     file_name = f'receipt-{uuid.uuid1()}.png'
     file.save(os.path.join('/tmp/uploads', file_name))
-    doc_dict = db_client.add_receipt(file_name)
-    return doc_dict
+    doc_id, doc_dict = db_client.add_receipt(file_name)
+    return doc_id, doc_dict
 
 
 def get_receipt_from_storage(id):

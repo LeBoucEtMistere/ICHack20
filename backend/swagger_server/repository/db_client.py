@@ -33,7 +33,7 @@ def add_receipt(file_name):
         u'validated': False
     }
     doc_ref.set(doc_dict)
-    return doc_dict
+    return doc_ref.id, doc_dict
 
 
 def get_receipt(id):

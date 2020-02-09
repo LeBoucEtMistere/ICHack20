@@ -5,6 +5,7 @@ import Home from '../screens/Home';
 import Settings from './Settings';
 import BankAccount from '../screens/BankAccount';
 import Receipt from '../screens/Receipt';
+import ErrorScreen from '../screens/ErrorScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,11 @@ const HomeStack = () => {
       <Stack.Screen name='Settings' component={Settings}></Stack.Screen>
       <Stack.Screen name='Bank Account' component={BankAccount}></Stack.Screen>
       <Stack.Screen name='Receipt' component={Receipt}></Stack.Screen>
+      <Stack.Screen name='Error' component={ErrorScreen}></Stack.Screen>
+      <Stack.Screen
+        name='LoadingAnimation'
+        component={BankAccount}
+      ></Stack.Screen>
     </Stack.Navigator>
   );
 };

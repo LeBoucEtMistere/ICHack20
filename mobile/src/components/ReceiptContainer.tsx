@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback
 } from 'react-native-gesture-handler';
+import getGrocerImage from '../store/grocers';
 const { width, height } = Dimensions.get('window');
 
 interface Receipt {
@@ -22,11 +23,11 @@ const ReceiptContainer: React.FC<Props> = ({ title, receipts, navigation }) => {
   const renderReceipt = ({ item, index }) => {
     return (
       <TouchableWithoutFeedback
-        onPress={() => navigation.navigate('Receipt', { receipt: item })}
+        onPress={() => navigation.navigate('Receipt', { item })}
       >
         <Card containerStyle={styles.receiptContainer}>
           <Image
-            source={{ uri: item.uri }}
+            source={{ uri: getGrocerImage(item[1].emitter) }}
             style={styles.image}
             PlaceholderContent={<ActivityIndicator />}
           ></Image>
@@ -42,8 +43,10 @@ const ReceiptContainer: React.FC<Props> = ({ title, receipts, navigation }) => {
             <View
               style={{ flexDirection: 'row', justifyContent: 'space-between' }}
             >
-              <Text style={styles.receiptTitle}>{item.name}</Text>
-              <Text>{item.totalPrice ? item.totalPrice : 'Unknown price'}</Text>
+              <Text style={styles.receiptTitle}>{item[1].emitter}</Text>
+              <Text>
+                {item[1].total ? '£' + item[1].total : 'Unknown price'}
+              </Text>
             </View>
           </View>
         </Card>
@@ -53,11 +56,14 @@ const ReceiptContainer: React.FC<Props> = ({ title, receipts, navigation }) => {
 
   return (
     <>
-      <Text style={styles.title}>{title}</Text>
-      <View style={{ height: 200, marginVertical: 8 }}>
+      <Text style={styles.title}>
+        {receipts.length}{' '}
+        {receipts.length === 1 ? title + ' receipt' : title + ' ' + 'receipts'}
+      </Text>
+      <View style={{ height: 150, marginVertical: 8 }}>
         <Carousel
           layout={'default'}
-          itemHeight={100}
+          itemHeight={150}
           renderItem={renderReceipt}
           data={receipts}
           sliderWidth={width}

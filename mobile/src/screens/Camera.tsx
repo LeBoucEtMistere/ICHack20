@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { RNCamera } from 'react-native-camera';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Axios from 'axios';
 import Config from 'react-native-config';
+import Axios from 'axios';
 
 const Camera = ({ route, navigation }) => {
   const takePictureHandler = async (camera: RNCamera) => {
@@ -11,52 +10,39 @@ const Camera = ({ route, navigation }) => {
     const data = await camera.takePictureAsync(options);
     console.log({ data });
     const endpoint = Config.SERVER_URL + '/pics';
-    const formData = new FormData();
-    var photo = {
-      uri: data.uri,
-      type: 'image/jpeg',
-      name: 'photo.jpg'
-    };
-    formData.append('photo', photo);
-    let response;
+    console.log({ endpoint });
     try {
-      response = await Axios.post(endpoint, formData);
+      const formData = new FormData();
+      formData.append('file', {
+        uri: data.uri,
+        type: 'image/jpeg',
+        name: 'pic.jpg'
+      });
+      const config = {
+        headers: { 'content-type': 'multipart/form-data' },
+        accept: 'application/json'
+      };
+      try {
+        const response = await Axios.post(endpoint, formData, config);
+        console.log({ response });
+      } catch (err) {
+        console.warn({ err });
+      }
+
+      // if (!carbonFootprintResponse.data.error) {
+      //   const meal = {
+      //     description: carbonFootprintResponse.data.description,
+      //     score: carbonFootprintResponse.data.score,
+      //     uri: 'data:image/jpeg;base64,' + response.data
+      //   };
+      // } else {
+      // }
     } catch (err) {
       console.warn({ err });
-      response = {
-        data: {
-          name: 'Tesco Tuesday',
-          total: '£5.08',
-          imageUri:
-            'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fc8.alamy.com%2Fcomp%2FCNTYDX%2Ftesco-shopping-receipt-CNTYDX.jpg&f=1&nofb=1',
-          items: [
-            {
-              name: 'Fresh Milk',
-              price: '£0.89'
-            },
-            {
-              name: 'Muesli',
-              price: '£2.29'
-            },
-            {
-              name: 'Dark Chocolate',
-              price: '£1.90',
-              quantity: 2
-            },
-            {
-              name: 'Dark Chocolate',
-              price: '£1.90',
-              quantity: 2
-            },
-            {
-              name: 'Dark Chocolate',
-              price: '£1.90',
-              quantity: 2
-            },
-            {}
-          ]
-        }
-      };
+    }
+
+    if (response.status === 400 || response.status === 404) {
+      return console.warn(`${response.status}, ${response.statusText}`);
     }
     console.log({ response });
     navigation.navigate('Receipt', { data: response.data });

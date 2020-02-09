@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -8,32 +8,48 @@ import { StyleSheet } from 'react-native';
 import ReceiptContainer from '../components/ReceiptContainer';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Axios from 'axios';
+import Config from 'react-native-config';
 
 interface Props {}
 
-const mockReceipts = [
-  {
-    name: 'Marks and Spencers on Monday',
-    uri: 'https://nimatuowino.files.wordpress.com/2014/06/tesco-receipt.jpg',
-    totalPrice: '£2.40'
-  },
-  {
-    name: 'Tesco on Tuesday',
-    uri:
-      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.dailymail.co.uk%2Fi%2Fpix%2F2016%2F05%2F31%2F15%2F34CC451900000578-3618060-Author_and_blogger_The_Unmumsy_Mum_shared_a_snap_of_the_Tesco_re-a-16_1464705617100.jpg&f=1&nofb=1',
-    totalPrice: '£2.40'
-  },
-  {
-    name: 'Waitrose on Wednesday',
-    uri:
-      'https://i.dailymail.co.uk/i/newpix/2018/09/06/20/4FCC4FE100000578-6140317-image-a-19_1536262741343.jpg',
-    totalPrice: '£2.40'
-  }
-];
+// const mockReceipts = [
+//   {
+//     name: 'Marks and Spencers on Monday',
+//     uri: 'https://nimatuowino.files.wordpress.com/2014/06/tesco-receipt.jpg',
+//     totalPrice: '£2.40'
+//   },
+//   {
+//     name: 'Tesco on Tuesday',
+//     uri:
+//       'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.dailymail.co.uk%2Fi%2Fpix%2F2016%2F05%2F31%2F15%2F34CC451900000578-3618060-Author_and_blogger_The_Unmumsy_Mum_shared_a_snap_of_the_Tesco_re-a-16_1464705617100.jpg&f=1&nofb=1',
+//     totalPrice: '£2.40'
+//   },
+//   {
+//     name: 'Waitrose on Wednesday',
+//     uri:
+//       'https://i.dailymail.co.uk/i/newpix/2018/09/06/20/4FCC4FE100000578-6140317-image-a-19_1536262741343.jpg',
+//     totalPrice: '£2.40'
+//   }
+// ];
 
 const Home: React.FC<Props> = ({ navigation }) => {
-  const [pendingReceipts, setPendingReceipts] = useState(mockReceipts);
-  const [processedReceipts, setProcessedReceipts] = useState(mockReceipts);
+  useEffect(() => {
+    (async () => {
+      const endpoint = Config.SERVER_URL + '/receipts';
+      const response = await Axios.get(endpoint);
+      console.log({ response });
+      setPendingReceipts(
+        response.data.filter(item => item[1].validated === false)
+      );
+      setProcessedReceipts(
+        response.data.filter(item => item[1].validated === true)
+      );
+    })();
+  }, []);
+
+  const [pendingReceipts, setPendingReceipts] = useState([]);
+  const [processedReceipts, setProcessedReceipts] = useState([]);
   // const [pendingReceipts, setPendingReceipts] = useState([]);
   // const [processedReceipts, setProcessedReceipts] = useState([]);
 
@@ -66,7 +82,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
       ></ReceiptContainer>
       <ReceiptContainer
         navigation={navigation}
-        title={'Previous receipts'}
+        title={'Processed receipts'}
         receipts={processedReceipts}
       ></ReceiptContainer>
       <TouchableOpacity

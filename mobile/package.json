@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "a:devmenu": "adb shell input keyevent 82",
     "a": "npm run android",
     "a:dev": "ENVFILE=.env.dev react-native run-android",
     "android": "ENVFILE=.env.android.local react-native run-android",

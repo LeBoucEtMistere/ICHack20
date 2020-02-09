@@ -1,13 +1,51 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { RNCamera } from 'react-native-camera';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Axios from 'axios';
 
 const Camera = ({ route, navigation }) => {
   const takePictureHandler = async camera => {
     const options = { quality: 0.5, base64: true };
     const data = await camera.takePictureAsync(options);
     console.log({ data });
-    // navigation.navigate('Feedback', {image: data});
+    // const endpoint = '';
+    // const response = await Axios.post(endpoint);
+    const response = {
+      data: {
+        name: 'Tesco Tuesday',
+        total: '£5.08',
+        imageUri:
+          'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fc8.alamy.com%2Fcomp%2FCNTYDX%2Ftesco-shopping-receipt-CNTYDX.jpg&f=1&nofb=1',
+        items: [
+          {
+            name: 'Fresh Milk',
+            price: '£0.89'
+          },
+          {
+            name: 'Muesli',
+            price: '£2.29'
+          },
+          {
+            name: 'Dark Chocolate',
+            price: '£1.90',
+            quantity: 2
+          },
+          {
+            name: 'Dark Chocolate',
+            price: '£1.90',
+            quantity: 2
+          },
+          {
+            name: 'Dark Chocolate',
+            price: '£1.90',
+            quantity: 2
+          },
+          {}
+        ]
+      }
+    };
+    navigation.navigate('Receipt', { data: response.data });
   };
 
   return (
@@ -37,9 +75,9 @@ const Camera = ({ route, navigation }) => {
               }}
             >
               <TouchableOpacity
-                onPress={() => takePictureHandler(camera)}
                 style={styles.capture}
-              />
+                onPress={() => takePictureHandler(camera)}
+              ></TouchableOpacity>
             </View>
           );
         }}
@@ -62,13 +100,14 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   capture: {
-    borderWidth: 4,
-    borderColor: 'lightgrey',
+    borderWidth: 2,
+    borderColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     width: 80,
     height: 80,
-    backgroundColor: 'red',
+    backgroundColor: 'rgba(9,9,9,0.1)',
+    margin: 32,
     borderRadius: 50
   }
 });

@@ -21,7 +21,8 @@ export default SignupOrRegister = ({ navigation }) => {
         style={{
           fontFamily: 'Share Tech',
           fontSize: 56,
-          top: 24
+          top: 32,
+          color: 'grey'
         }}
       >
         Reimbursr

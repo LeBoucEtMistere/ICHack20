@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator, RefreshControl } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
@@ -34,7 +34,11 @@ interface Props {}
 // ];
 
 const Home: React.FC<Props> = ({ navigation }) => {
-  useEffect(() => {
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+
     (async () => {
       const endpoint = Config.SERVER_URL + '/receipts';
       const response = await Axios.get(endpoint);
@@ -45,19 +49,41 @@ const Home: React.FC<Props> = ({ navigation }) => {
       setProcessedReceipts(
         response.data.filter(item => item[1].validated === true)
       );
+      setRefreshing(false);
+      setLoading(false);
+    })();
+  }, [refreshing]);
+
+  useEffect(() => {
+    (async () => {
+      const endpoint = Config.SERVER_URL + '/receipts';
+      try {
+        const response = await Axios.get(endpoint);
+        console.log({ response });
+        setPendingReceipts(
+          response.data.filter(item => item[1].validated === false)
+        );
+        setProcessedReceipts(
+          response.data.filter(item => item[1].validated === true)
+        );
+      } catch (err) {
+        console.warn({ err });
+      }
+      setLoading(false);
     })();
   }, []);
 
+  const [loading, setLoading] = useState(true);
   const [pendingReceipts, setPendingReceipts] = useState([]);
   const [processedReceipts, setProcessedReceipts] = useState([]);
-  // const [pendingReceipts, setPendingReceipts] = useState([]);
-  // const [processedReceipts, setProcessedReceipts] = useState([]);
 
   const openCamera = () => {
     navigation.navigate('Camera');
   };
 
-  return (
+  return loading ? (
+    <ActivityIndicator style={{ height: '100%' }} />
+  ) : (
     <SafeAreaView style={{ height: '100%' }}>
       <View
         style={{
@@ -75,16 +101,22 @@ const Home: React.FC<Props> = ({ navigation }) => {
           ></MaterialIcons>
         </TouchableOpacity>
       </View>
-      <ReceiptContainer
-        navigation={navigation}
-        title={'Pending receipts'}
-        receipts={pendingReceipts}
-      ></ReceiptContainer>
-      <ReceiptContainer
-        navigation={navigation}
-        title={'Processed receipts'}
-        receipts={processedReceipts}
-      ></ReceiptContainer>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        <ReceiptContainer
+          navigation={navigation}
+          title={'Pending'}
+          receipts={pendingReceipts}
+        ></ReceiptContainer>
+        <ReceiptContainer
+          navigation={navigation}
+          title={'Processed'}
+          receipts={processedReceipts}
+        ></ReceiptContainer>
+      </ScrollView>
       <TouchableOpacity
         onPress={openCamera}
         containerStyle={{

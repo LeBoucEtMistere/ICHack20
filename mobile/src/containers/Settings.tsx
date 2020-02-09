@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { SafeAreaView, StyleSheet, View, Linking } from 'react-native';
 import { Text, ListItem } from 'react-native-elements';
-import { GoogleSignin } from '@react-native-community/google-signin';
+import LottieView from 'lottie-react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { AuthContext } from '../store/Auth';
 
@@ -38,7 +38,7 @@ const Settings: React.FC<Props> = ({ navigation }) => {
       <View style={styles.listContainer}>
         <ListItem
           containerStyle={styles.buttonContainer}
-          title='Connect bank account'
+          title='Remove bank details: ThoughtMachine'
           topDivider
           bottomDivider
           onPress={openSetUpBankAccount}
@@ -56,6 +56,21 @@ const Settings: React.FC<Props> = ({ navigation }) => {
           bottomDivider
           onPress={logoutHandler}
         />
+      </View>
+      <View
+        style={{
+          width: '100%',
+          alignItems: 'center',
+          height: '50%',
+          justifyContent: 'center'
+        }}
+      >
+        <LottieView
+          style={{ justifyContent: 'center' }}
+          autoPlay
+          autoSize
+          source={require('../animations/lf30_editor_yju5jk.json')}
+        ></LottieView>
       </View>
       <View>
         {errors.map((error, i) => (

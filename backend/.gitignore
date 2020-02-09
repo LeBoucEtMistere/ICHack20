@@ -1,4 +1,5 @@
 .env/
+venv
 .vscode
 .DS_Store
 swagger_server/vault_client/

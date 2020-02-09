@@ -22,30 +22,22 @@ const Camera = ({ route, navigation }) => {
         headers: { 'content-type': 'multipart/form-data' },
         accept: 'application/json'
       };
+      // TODO Show loading screen
+      navigation.navigate('LoadingAnimation');
       try {
         const response = await Axios.post(endpoint, formData, config);
         console.log({ response });
+
+        navigation.navigate('Receipt', { item: response.data });
       } catch (err) {
         console.warn({ err });
+        navigation.navigate('Error', {
+          navigation
+        });
       }
-
-      // if (!carbonFootprintResponse.data.error) {
-      //   const meal = {
-      //     description: carbonFootprintResponse.data.description,
-      //     score: carbonFootprintResponse.data.score,
-      //     uri: 'data:image/jpeg;base64,' + response.data
-      //   };
-      // } else {
-      // }
     } catch (err) {
       console.warn({ err });
     }
-
-    if (response.status === 400 || response.status === 404) {
-      return console.warn(`${response.status}, ${response.statusText}`);
-    }
-    console.log({ response });
-    navigation.navigate('Receipt', { data: response.data });
   };
 
   return (

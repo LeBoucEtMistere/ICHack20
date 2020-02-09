@@ -3,6 +3,7 @@
 import connexion
 
 from swagger_server import encoder
+from swagger_server.service.account_management import initialize_customers, initialize_current_accounts, get_customers, get_current_accounts
 
 
 def main():
@@ -13,4 +14,17 @@ def main():
 
 
 if __name__ == '__main__':
+    # first check if customers and accounts exist => if not, then create
+    customers_array = []
+    try:
+        customers_array = get_customers(
+            ['95191861583545753', '35294866593545759'])
+    except:
+        initialize_customers()
+        customers_array = get_customers(
+            ['95191861583545753', '35294866593545759'])
+    try:
+        get_current_accounts(['john_wick_003', 'company_evil_003'])
+    except:
+        accounts = initialize_current_accounts(customers_array)
     main()

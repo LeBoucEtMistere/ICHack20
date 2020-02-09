@@ -1,3 +1,5 @@
 .env/
 .vscode
 .DS_Store
+swagger_server/vault_client/
+firebase_key.json

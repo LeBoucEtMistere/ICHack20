@@ -5,22 +5,22 @@ from swagger_server.models.receipt import Receipt  # noqa: E501
 from swagger_server.models.user import User  # noqa: E501
 from swagger_server import util
 
+from swagger_server.service import account_management as am
+from swagger_server.service import transaction_management as tm
+from swagger_server.service import receipt_management as rm
+from flask import jsonify, request
 
-def add_receipt(searchString=None, skip=None, limit=None):  # noqa: E501
+
+def add_receipt():  # noqa: E501
     """adds an inventory item
 
     Adds an receipt to the system # noqa: E501
 
-    :param searchString: pass an optional search string for looking up inventory
-    :type searchString: str
-    :param skip: number of records to skip for pagination
-    :type skip: int
-    :param limit: maximum number of records to return
-    :type limit: int
 
-    :rtype: List[Receipt]
+    :rtype: None
     """
-    return 'do some magic!'
+    doc_dict = rm.add_receipt_storage(request)
+    return jsonify(doc_dict)
 
 
 def get_info(id):  # noqa: E501
@@ -31,9 +31,10 @@ def get_info(id):  # noqa: E501
     :param id: the user&#39;s id
     :type id: str
 
-    :rtype: List[User]
+    :rtype: User
     """
-    return 'do some magic!'
+    user_info = am.get_user_info(id)
+    return jsonify(user_info)
 
 
 def get_receipts():  # noqa: E501
@@ -44,7 +45,8 @@ def get_receipts():  # noqa: E501
 
     :rtype: List[Receipt]
     """
-    return 'do some magic!'
+    doc_dict = rm.get_all_receipts()
+    return jsonify(doc_dict)
 
 
 def get_receipts_by_id(id):  # noqa: E501
@@ -57,7 +59,8 @@ def get_receipts_by_id(id):  # noqa: E501
 
     :rtype: Receipt
     """
-    return 'do some magic!'
+    doc_dict = rm.get_receipt(id)
+    return jsonify(doc_dict)
 
 
 def validate_receipt(receiptId):  # noqa: E501
@@ -70,4 +73,8 @@ def validate_receipt(receiptId):  # noqa: E501
 
     :rtype: None
     """
-    return 'do some magic!'
+    return rm.validate_receipt(receiptId)
+
+
+def get_pictures_of_receipts_by_id(id):
+    return rm.get_receipt_from_storage(id)

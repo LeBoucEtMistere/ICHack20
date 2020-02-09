@@ -18,14 +18,10 @@ class TestDefaultController(BaseTestCase):
 
         adds an inventory item
         """
-        query_string = [('searchString', 'searchString_example'),
-                        ('skip', 1),
-                        ('limit', 50)]
         response = self.client.open(
             '/ICHack/ICHack20/1.0.0/pics',
             method='POST',
-            content_type='image/png',
-            query_string=query_string)
+            content_type='image/png')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

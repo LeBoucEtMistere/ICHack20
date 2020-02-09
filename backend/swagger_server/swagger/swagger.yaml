@@ -12,12 +12,12 @@ info:
 host: "virtserver.swaggerhub.com"
 basePath: "/ICHack/ICHack20/1.0.0"
 tags:
-- name: "admins"
-  description: "Secured Admin-only calls"
-- name: "developers"
-  description: "Operations available to regular developers"
+  - name: "admins"
+    description: "Secured Admin-only calls"
+  - name: "developers"
+    description: "Operations available to regular developers"
 schemes:
-- "https"
+  - "https"
 paths:
   /users/{id}:
     get:
@@ -25,71 +25,30 @@ paths:
       description: "get info on one user"
       operationId: "get_info"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "id"
-        in: "path"
-        description: "the user's id"
-        required: true
-        type: "string"
+        - name: "id"
+          in: "path"
+          description: "the user's id"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "search results matching criteria"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/User"
-        "400":
-          description: "bad input parameter"
-      x-swagger-router-controller: "swagger_server.controllers.default_controller"
-  /pics:
-    post:
-      summary: "adds an inventory item"
-      description: "Adds an receipt to the system"
-      operationId: "add_receipt"
-      consumes:
-      - "image/png"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "searchString"
-        in: "query"
-        description: "pass an optional search string for looking up inventory"
-        required: false
-        type: "string"
-      - name: "skip"
-        in: "query"
-        description: "number of records to skip for pagination"
-        required: false
-        type: "integer"
-        minimum: 0
-        format: "int32"
-      - name: "limit"
-        in: "query"
-        description: "maximum number of records to return"
-        required: false
-        type: "integer"
-        maximum: 50
-        minimum: 0
-        format: "int32"
-      responses:
-        "200":
-          description: "search results matching criteria"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Receipt"
+            $ref: "#/definitions/User"
         "400":
           description: "bad input parameter"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
   /receipts:
     get:
       summary: "return lists of receipts"
-      description: "By passing in the appropriate options, you can search for\navailable\
+      description:
+        "By passing in the appropriate options, you can search for\navailable\
         \ inventory in the system\n"
       operationId: "get_receipts"
       produces:
-      - "application/json"
+        - "application/json"
       parameters: []
       responses:
         "200":
@@ -104,17 +63,18 @@ paths:
   /receipts/{id}:
     get:
       summary: "return lists of receipts"
-      description: "By passing in the appropriate options, you can search for\navailable\
+      description:
+        "By passing in the appropriate options, you can search for\navailable\
         \ inventory in the system\n"
       operationId: "get_receipts_by_id"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "id"
-        in: "path"
-        description: "get a particular receit"
-        required: true
-        type: "integer"
+        - name: "id"
+          in: "path"
+          description: "get a particular receit"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "search results matching criteria"
@@ -123,16 +83,53 @@ paths:
         "400":
           description: "bad input parameter"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /receipts/pics/{id}:
+    get:
+      summary: "returns pictures of receipts"
+      description:
+        "By passing in the appropriate options, you can search for\navailable\
+        \ inventory in the system\n"
+      operationId: "get_pictures_of_receipts_by_id"
+      produces:
+        - "image/png"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "get pictures of receipts"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "search results matching criteria"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /pics:
+    post:
+      summary: "adds an inventory item"
+      description: "Adds an receipt to the system"
+      operationId: "add_receipt"
+      consumes:
+        - "image/png"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "pic added"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
   /validateReceipt/{receiptId}:
     put:
       summary: "validate a receipt"
       operationId: "validate_receipt"
       parameters:
-      - name: "receiptId"
-        in: "path"
-        description: "receipt Id"
-        required: true
-        type: "integer"
+        - name: "receiptId"
+          in: "path"
+          description: "receipt Id"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "search results matching criteria"
@@ -147,7 +144,7 @@ definitions:
         example: "05382A574B8293C"
       total:
         type: "number"
-        example: 120.0
+        example: 120
       receiptHolder:
         type: "string"
         example: "Ben"
@@ -168,7 +165,7 @@ definitions:
         example: "EUR"
       VAT:
         type: "number"
-        example: 22.2
+        example: 22.199999999999999289457264239899814128875732421875
       receiptItems:
         type: "array"
         items:
@@ -176,14 +173,14 @@ definitions:
       status: {}
     example:
       date: "01-01-2020"
-      total: 120.0
+      total: 120
       receiver: "Ben's company"
       receiptItems:
-      - itemName: "fries"
-        price: 120.0
-      - itemName: "fries"
-        price: 120.0
-      VAT: 22.2
+        - itemName: "fries"
+          price: 120
+        - itemName: "fries"
+          price: 120
+      VAT: 22.199999999999999289457264239899814128875732421875
       receiptHolder: "Ben"
       emmiter: "The restaurant of Alex"
       currency: "EUR"
@@ -196,14 +193,14 @@ definitions:
         example: "fries"
       price:
         type: "number"
-        example: 120.0
+        example: 120
     example:
       itemName: "fries"
-      price: 120.0
+      price: 120
   User:
     properties:
       balance:
         type: "number"
-        example: 344.0
+        example: 344
     example:
-      balance: 344.0
+      balance: 344

@@ -3,7 +3,7 @@
 </p>
 
 ## Description
-Reimbursr provides lightning fast validations for your scanned receipts & immediately reimburses you by performing a transaction from the company entity account to your personal account. This project was written from scratch and put together at IC Hack 2020.
+Reimbursr provides lightning fast validations for your scanned receipts & immediately reimburses you by performing a transaction from the company entity account to your personal account. Companies can use Reimbursr to reduce the pain points with calculating expenses for their employees, as well as the burden on administration and management (VAT is considered and recorded in the database as well). This project was written from scratch and put together at IC Hack 2020.
 
 ## Business Logic
 1. Open Reimbursr
@@ -20,10 +20,13 @@ Reimbursr provides lightning fast validations for your scanned receipts & immedi
 ## Technologies Used
 - Swagger
 - Python3 with Flask
+- Ngrok
+- TypeScript
 - React-Native
 - VueJS
 - FireStore (Firebase DB)
 - Google Cloud Vision
+- Vault the Core Banking Engine by Thought Machine
 
 ## License
 

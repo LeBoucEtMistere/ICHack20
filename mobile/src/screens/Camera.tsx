@@ -3,48 +3,62 @@ import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Axios from 'axios';
+import Config from 'react-native-config';
 
 const Camera = ({ route, navigation }) => {
-  const takePictureHandler = async camera => {
+  const takePictureHandler = async (camera: RNCamera) => {
     const options = { quality: 0.5, base64: true };
     const data = await camera.takePictureAsync(options);
     console.log({ data });
-    // const endpoint = '';
-    // const response = await Axios.post(endpoint);
-    const response = {
-      data: {
-        name: 'Tesco Tuesday',
-        total: '£5.08',
-        imageUri:
-          'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fc8.alamy.com%2Fcomp%2FCNTYDX%2Ftesco-shopping-receipt-CNTYDX.jpg&f=1&nofb=1',
-        items: [
-          {
-            name: 'Fresh Milk',
-            price: '£0.89'
-          },
-          {
-            name: 'Muesli',
-            price: '£2.29'
-          },
-          {
-            name: 'Dark Chocolate',
-            price: '£1.90',
-            quantity: 2
-          },
-          {
-            name: 'Dark Chocolate',
-            price: '£1.90',
-            quantity: 2
-          },
-          {
-            name: 'Dark Chocolate',
-            price: '£1.90',
-            quantity: 2
-          },
-          {}
-        ]
-      }
+    const endpoint = Config.SERVER_URL + '/pics';
+    const formData = new FormData();
+    var photo = {
+      uri: data.uri,
+      type: 'image/jpeg',
+      name: 'photo.jpg'
     };
+    formData.append('photo', photo);
+    let response;
+    try {
+      response = await Axios.post(endpoint, formData);
+    } catch (err) {
+      console.warn({ err });
+      response = {
+        data: {
+          name: 'Tesco Tuesday',
+          total: '£5.08',
+          imageUri:
+            'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fc8.alamy.com%2Fcomp%2FCNTYDX%2Ftesco-shopping-receipt-CNTYDX.jpg&f=1&nofb=1',
+          items: [
+            {
+              name: 'Fresh Milk',
+              price: '£0.89'
+            },
+            {
+              name: 'Muesli',
+              price: '£2.29'
+            },
+            {
+              name: 'Dark Chocolate',
+              price: '£1.90',
+              quantity: 2
+            },
+            {
+              name: 'Dark Chocolate',
+              price: '£1.90',
+              quantity: 2
+            },
+            {
+              name: 'Dark Chocolate',
+              price: '£1.90',
+              quantity: 2
+            },
+            {}
+          ]
+        }
+      };
+    }
+    console.log({ response });
     navigation.navigate('Receipt', { data: response.data });
   };
 

@@ -73,7 +73,7 @@ def validate_receipt(receiptId):  # noqa: E501
 
     :rtype: None
     """
-    return 'do some magic!'
+    return rm.validate_receipt(receiptId)
 
 
 def get_pictures_of_receipts_by_id(id):

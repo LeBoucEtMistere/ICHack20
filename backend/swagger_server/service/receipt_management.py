@@ -21,3 +21,7 @@ def get_receipt_from_storage(id):
 
 def get_all_receipts():
     return db_client.get_all_receipts()
+
+
+def validate_receipt(receiptId):
+    return db_client.validate_receipt(receiptId)

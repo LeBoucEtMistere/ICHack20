@@ -29,7 +29,8 @@ def add_receipt(file_name):
         u'image_filename': file_name,
         u'receipt_holder': u'35294866593545759',
         u'receiver': u'95191861583545753',
-        u'total': 30
+        u'total': 30,
+        u'validated': False
     }
     doc_ref.set(doc_dict)
     return doc_dict
@@ -41,5 +42,11 @@ def get_receipt(id):
 
 
 def get_all_receipts():
-    doc_ref = db.collection(u'receipts').get().to_dict()
-    return doc_ref
+    doc_ref = db.collection(u'receipts')
+    return list(map(lambda x: x.get().to_dict(),
+                    list(doc_ref.list_documents())))
+
+
+def validate_receipt(receipt_id):
+    doc_ref = db.collection(u'receipts').document(f'{receipt_id}')
+    doc_ref.update({"validated": True})

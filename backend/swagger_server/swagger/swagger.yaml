@@ -12,12 +12,12 @@ info:
 host: "virtserver.swaggerhub.com"
 basePath: "/ICHack/ICHack20/1.0.0"
 tags:
-- name: "admins"
-  description: "Secured Admin-only calls"
-- name: "developers"
-  description: "Operations available to regular developers"
+  - name: "admins"
+    description: "Secured Admin-only calls"
+  - name: "developers"
+    description: "Operations available to regular developers"
 schemes:
-- "https"
+  - "https"
 paths:
   /users/{id}:
     get:
@@ -25,13 +25,13 @@ paths:
       description: "get info on one user"
       operationId: "get_info"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "id"
-        in: "path"
-        description: "the user's id"
-        required: true
-        type: "string"
+        - name: "id"
+          in: "path"
+          description: "the user's id"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "search results matching criteria"
@@ -46,9 +46,9 @@ paths:
       description: "Adds an receipt to the system"
       operationId: "add_receipt"
       consumes:
-      - "image/png"
+        - "image/png"
       produces:
-      - "application/json"
+        - "application/json"
       parameters: []
       responses:
         "200":
@@ -59,11 +59,12 @@ paths:
   /receipts:
     get:
       summary: "return lists of receipts"
-      description: "By passing in the appropriate options, you can search for\navailable\
+      description:
+        "By passing in the appropriate options, you can search for\navailable\
         \ inventory in the system\n"
       operationId: "get_receipts"
       produces:
-      - "application/json"
+        - "application/json"
       parameters: []
       responses:
         "200":
@@ -78,17 +79,18 @@ paths:
   /receipts/{id}:
     get:
       summary: "return lists of receipts"
-      description: "By passing in the appropriate options, you can search for\navailable\
+      description:
+        "By passing in the appropriate options, you can search for\navailable\
         \ inventory in the system\n"
       operationId: "get_receipts_by_id"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "id"
-        in: "path"
-        description: "get a particular receit"
-        required: true
-        type: "integer"
+        - name: "id"
+          in: "path"
+          description: "get a particular receit"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "search results matching criteria"
@@ -100,17 +102,18 @@ paths:
   /receipts/pics/{id}:
     get:
       summary: "returns pictures of receipts"
-      description: "By passing in the appropriate options, you can search for\navailable\
+      description:
+        "By passing in the appropriate options, you can search for\navailable\
         \ inventory in the system\n"
       operationId: "get_pictures_of_receipts_by_id"
       produces:
-      - "image/png"
+        - "image/png"
       parameters:
-      - name: "id"
-        in: "path"
-        description: "get pictures of receipts"
-        required: true
-        type: "string"
+        - name: "id"
+          in: "path"
+          description: "get pictures of receipts"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "search results matching criteria"
@@ -122,11 +125,11 @@ paths:
       summary: "validate a receipt"
       operationId: "validate_receipt"
       parameters:
-      - name: "receiptId"
-        in: "path"
-        description: "receipt Id"
-        required: true
-        type: "integer"
+        - name: "receiptId"
+          in: "path"
+          description: "receipt Id"
+          required: true
+          type: "string"
       responses:
         "200":
           description: "search results matching criteria"
@@ -173,10 +176,10 @@ definitions:
       total: 120
       receiver: "Ben's company"
       receiptItems:
-      - itemName: "fries"
-        price: 120
-      - itemName: "fries"
-        price: 120
+        - itemName: "fries"
+          price: 120
+        - itemName: "fries"
+          price: 120
       VAT: 22.199999999999999289457264239899814128875732421875
       receiptHolder: "Ben"
       emmiter: "The restaurant of Alex"

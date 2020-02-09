@@ -43,7 +43,7 @@ def get_receipt(id):
 
 def get_all_receipts():
     doc_ref = db.collection(u'receipts')
-    return list(map(lambda x: x.get().to_dict(),
+    return list(map(lambda x: (x.id, x.get().to_dict()),
                     list(doc_ref.list_documents())))
 
 

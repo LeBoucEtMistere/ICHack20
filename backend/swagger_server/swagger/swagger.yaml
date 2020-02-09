@@ -40,22 +40,6 @@ paths:
         "400":
           description: "bad input parameter"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
-  /pics:
-    post:
-      summary: "adds an inventory item"
-      description: "Adds an receipt to the system"
-      operationId: "add_receipt"
-      consumes:
-        - "image/png"
-      produces:
-        - "application/json"
-      parameters: []
-      responses:
-        "200":
-          description: "pic added"
-        "400":
-          description: "bad input parameter"
-      x-swagger-router-controller: "swagger_server.controllers.default_controller"
   /receipts:
     get:
       summary: "return lists of receipts"
@@ -117,6 +101,22 @@ paths:
       responses:
         "200":
           description: "search results matching criteria"
+        "400":
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /pics:
+    post:
+      summary: "adds an inventory item"
+      description: "Adds an receipt to the system"
+      operationId: "add_receipt"
+      consumes:
+        - "image/png"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "pic added"
         "400":
           description: "bad input parameter"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"

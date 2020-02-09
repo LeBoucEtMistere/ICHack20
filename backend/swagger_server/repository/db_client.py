@@ -1,6 +1,7 @@
 from firebase_admin import firestore
 from datetime import datetime
 from swagger_server.service.ocr import process_image
+from swagger_server.service import transaction_management as tm
 import os
 
 
@@ -26,9 +27,12 @@ def add_receipt(file_name):
         u'receipt_holder': u'35294866593545759',
         u'receiver': u'95191861583545753',
         u'total': tally2["total"],
-        u'validated': False
+        u'validated': True if float(tally2["total"]) <= 15 else False
     }
     doc_ref.set(doc_dict)
+    if doc_dict["validated"] == True:
+        tm.reimburse(tally2["total"], '35294866593545759',
+                     '95191861583545753', 'Autopay Reimbursr')
     return doc_ref.id, doc_dict
 
 
@@ -46,3 +50,4 @@ def get_all_receipts():
 def validate_receipt(receipt_id):
     doc_ref = db.collection(u'receipts').document(f'{receipt_id}')
     doc_ref.update({"validated": True})
+    return doc_ref.get().to_dict()

@@ -7,6 +7,7 @@ from swagger_server.service.account_management import initialize_customers, init
 from firebase_admin import credentials
 import firebase_admin
 from flask import request
+from flask_cors import CORS
 
 cred = credentials.Certificate("swagger_server/firebase_key.json")
 firebase_admin.initialize_app(cred)
@@ -14,17 +15,18 @@ firebase_admin.initialize_app(cred)
 app = connexion.App(__name__, specification_dir='./swagger/')
 app.app.json_encoder = encoder.JSONEncoder
 app.add_api('swagger.yaml', arguments={'title': 'Simple Inventory API'})
+CORS(app.app)
 
 
-@app.app.after_request
-def add_cors_headers(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    if request.method == 'OPTIONS':
-        response.headers['Access-Control-Allow-Methods'] = 'DELETE, GET, POST, PUT'
-        headers = request.headers.get('Access-Control-Request-Headers')
-        if headers:
-            response.headers['Access-Control-Allow-Headers'] = headers
-    return response
+# @app.app.after_request
+# def add_cors_headers(response):
+#     response.headers['Access-Control-Allow-Origin'] = '*'
+#     if request.method == 'OPTIONS':
+#         response.headers['Access-Control-Allow-Methods'] = 'DELETE, GET, POST, PUT'
+#         headers = request.headers.get('Access-Control-Request-Headers')
+#         if headers:
+#             response.headers['Access-Control-Allow-Headers'] = headers
+#     return response
 
 
 def main():

@@ -76,6 +76,7 @@ def process_image(image_file):
 #         tally["total"] = re.findall(price,total)[0]
     tally2["currency"] = currency
     tally2["store"] = first_line
+    tally2["total"] = 0
 
     # find total in items
     for i in range(len(items)):

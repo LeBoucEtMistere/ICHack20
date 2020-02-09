@@ -4,6 +4,7 @@ import os
 from flask import send_from_directory
 from swagger_server.repository.db_client import get_receipt
 from swagger_server.repository import db_client
+from swagger_server.service import transaction_management as tm
 
 from google.cloud import storage
 storage_client = storage.Client()
@@ -49,4 +50,9 @@ def get_all_receipts():
 
 
 def validate_receipt(receiptId):
-    return db_client.validate_receipt(receiptId)
+    validated_receipt_dict = db_client.validate_receipt(receiptId)
+    total = validated_receipt_dict["total"]
+    holder = validated_receipt_dict["receipt_holder"]
+    receiver = validated_receipt_dict["receiver"]
+    tm.reimburse(total, holder, receiver, "Approved By HR")
+    return validated_receipt_dict

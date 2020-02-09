@@ -16,6 +16,9 @@ def process_image(image_file):
     response = client.text_detection(image=image)
     document = response.text_annotations[1:]
 
+    if document == []:
+        raise Error('Trying to submit empty image')
+
     items = []
     lines = {}
     tally = {}

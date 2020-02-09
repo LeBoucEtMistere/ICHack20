@@ -19,11 +19,10 @@
 		2DCD954D1E0B4F2C00145EB5 /* mobileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* mobileTests.m */; };
 		4725F35450E712D4180BF521 /* libPods-mobile-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B05014D25EF9D7697C08FFA /* libPods-mobile-tvOS.a */; };
 		53C85CC92FBCF109AC719078 /* libPods-mobileTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 754976F0C8F60EE33910C2D7 /* libPods-mobileTests.a */; };
-		B5873A4123EF669C002D7AB7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5873A4023EF669C002D7AB7 /* File.swift */; };
-		B5C9325823E74ACC00A27A00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5C9325723E74ACC00A27A00 /* GoogleService-Info.plist */; };
-		D2A3F419F1982C99C29224EF /* libPods-mobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA09042F1FB017F82F7BA0D /* libPods-mobile-tvOSTests.a */; };
-		343AF0145FC14D9394330E5E /* ShareTech-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D609F85AB04A422794F5E3AE /* ShareTech-Regular.ttf */; };
 		59BED4631B7F4709B4FB9957 /* Share Tech.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B18DE05E35F4FA78AFE8A27 /* Share Tech.ttf */; };
+		B5873A4123EF669C002D7AB7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5873A4023EF669C002D7AB7 /* File.swift */; };
+		B5974B1B23EF7AC8000762B2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5974B1A23EF7AC8000762B2 /* GoogleService-Info.plist */; };
+		D2A3F419F1982C99C29224EF /* libPods-mobile-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA09042F1FB017F82F7BA0D /* libPods-mobile-tvOSTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +56,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = mobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mobile/main.m; sourceTree = "<group>"; };
+		1B18DE05E35F4FA78AFE8A27 /* Share Tech.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Share Tech.ttf"; path = "../assets/fonts/Share Tech.ttf"; sourceTree = "<group>"; };
 		23E1E398F2D34AD2A3CCE349 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		25F50FF9EFF54702A16F79CC /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* mobile-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mobile-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,18 +80,18 @@
 		9BC3980E654CFCC39741D167 /* Pods-mobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-mobile-tvOSTests/Pods-mobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		B5873A3F23EF669B002D7AB7 /* mobile-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobile-Bridging-Header.h"; sourceTree = "<group>"; };
 		B5873A4023EF669C002D7AB7 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		B5974B1A23EF7AC8000762B2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B5C9325723E74ACC00A27A00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C03748C3EC3B4A8CB362B696 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		C85DBD39EA344A4B8A925474 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		D27015DBB1144B91872A3409 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		D3F0028055B9478CA50C9E4A /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		D609F85AB04A422794F5E3AE /* ShareTech-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ShareTech-Regular.ttf"; path = "../assets/fonts/ShareTech-Regular.ttf"; sourceTree = "<group>"; };
 		E4819A079FFE49939E590FC0 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F385C1AFCD7F2397341164DC /* Pods-mobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-mobile-tvOS/Pods-mobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		FFA93D83101594C493539B97 /* Pods-mobile-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-mobile-tvOS/Pods-mobile-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		D609F85AB04A422794F5E3AE /* ShareTech-Regular.ttf */ = {isa = PBXFileReference; name = "ShareTech-Regular.ttf"; path = "../assets/fonts/ShareTech-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1B18DE05E35F4FA78AFE8A27 /* Share Tech.ttf */ = {isa = PBXFileReference; name = "Share Tech.ttf"; path = "../assets/fonts/Share Tech.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +185,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				B5974B1A23EF7AC8000762B2 /* GoogleService-Info.plist */,
 				B5873A4023EF669C002D7AB7 /* File.swift */,
 				13B07FAE1A68108700A75B9A /* mobile */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -345,7 +346,7 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = K36H5FNKVG;
+						DevelopmentTeam = DXY3Q8PYGP;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
@@ -354,10 +355,12 @@
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = DXY3Q8PYGP;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = DXY3Q8PYGP;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
@@ -398,9 +401,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				B5974B1B23EF7AC8000762B2 /* GoogleService-Info.plist in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				B5C9325823E74ACC00A27A00 /* GoogleService-Info.plist in Resources */,
-				343AF0145FC14D9394330E5E /* ShareTech-Regular.ttf in Resources */,
 				59BED4631B7F4709B4FB9957 /* Share Tech.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		040A93751355CD43356AC2DC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -709,7 +711,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = K36H5FNKVG;
+				DEVELOPMENT_TEAM = DXY3Q8PYGP;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -735,7 +737,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = K36H5FNKVG;
+				DEVELOPMENT_TEAM = DXY3Q8PYGP;
 				INFOPLIST_FILE = mobileTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -939,6 +941,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = DXY3Q8PYGP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -992,6 +995,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = DXY3Q8PYGP;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

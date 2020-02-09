@@ -20,6 +20,17 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.254664784940-vcp7sl5sto504kvpq6tvkbqt15ecvmp4</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -40,7 +51,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your camera</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your microphone (for videos)</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

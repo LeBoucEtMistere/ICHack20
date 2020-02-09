@@ -7,6 +7,7 @@ import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 import ReceiptContainer from '../components/ReceiptContainer';
 import { Text } from 'react-native-elements';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface Props {}
 
@@ -41,7 +42,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <View style={{ height: '100%' }}>
+    <SafeAreaView style={{ height: '100%' }}>
       <View
         style={{
           flexDirection: 'row',
@@ -49,30 +50,31 @@ const Home: React.FC<Props> = ({ navigation }) => {
           margin: 8
         }}
       >
-        <Text h3>Your receipts</Text>
+        <Text style={styles.title}>Your receipts</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
           <MaterialIcons
             name='settings'
             size={35}
-            color='grey'
             style={{ marginTop: 8, marginRight: 8 }}
           ></MaterialIcons>
         </TouchableOpacity>
       </View>
       <ReceiptContainer
+        navigation={navigation}
         title={'Pending receipts'}
         receipts={pendingReceipts}
       ></ReceiptContainer>
       <ReceiptContainer
+        navigation={navigation}
         title={'Previous receipts'}
         receipts={processedReceipts}
       ></ReceiptContainer>
       <TouchableOpacity
         onPress={openCamera}
         containerStyle={{
-          backgroundColor: '#84DCC6',
+          backgroundColor: 'grey',
           elevation: 3,
-          borderRadius: 36,
+          borderRadius: 32,
           justifyContent: 'center',
           alignItems: 'center',
           width: 64,
@@ -84,10 +86,17 @@ const Home: React.FC<Props> = ({ navigation }) => {
       >
         <AntDesign name='plus' color={'white'} size={50}></AntDesign>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    fontFamily: 'Share Tech',
+    fontSize: 36,
+    marginLeft: 8,
+    marginTop: 8
+  }
+});
 
 export default Home;

@@ -2,6 +2,10 @@ import React from 'react';
 import { Card, Image, Text } from 'react-native-elements';
 import { ActivityIndicator, View, StyleSheet, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import {
+  TouchableOpacity,
+  TouchableWithoutFeedback
+} from 'react-native-gesture-handler';
 const { width, height } = Dimensions.get('window');
 
 interface Receipt {
@@ -14,40 +18,42 @@ interface Props {
   receipts: Receipt[];
 }
 
-const ReceiptContainer: React.FC<Props> = ({ title, receipts }) => {
+const ReceiptContainer: React.FC<Props> = ({ title, receipts, navigation }) => {
   const renderReceipt = ({ item, index }) => {
     return (
-      <Card containerStyle={styles.receiptContainer}>
-        <Image
-          source={{ uri: item.uri }}
-          style={styles.image}
-          PlaceholderContent={<ActivityIndicator />}
-        ></Image>
-        <View
-          style={{
-            backgroundColor: 'white',
-            width: '100%',
-            position: 'absolute',
-            bottom: 0,
-            padding: 16
-          }}
-        >
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('Receipt', { receipt: item })}
+      >
+        <Card containerStyle={styles.receiptContainer}>
+          <Image
+            source={{ uri: item.uri }}
+            style={styles.image}
+            PlaceholderContent={<ActivityIndicator />}
+          ></Image>
           <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+            style={{
+              backgroundColor: 'white',
+              width: '100%',
+              position: 'absolute',
+              bottom: 0,
+              padding: 16
+            }}
           >
-            <Text>{item.name}</Text>
-            <Text>{item.totalPrice ? item.totalPrice : 'Unknown price'}</Text>
+            <View
+              style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+            >
+              <Text style={styles.receiptTitle}>{item.name}</Text>
+              <Text>{item.totalPrice ? item.totalPrice : 'Unknown price'}</Text>
+            </View>
           </View>
-        </View>
-      </Card>
+        </Card>
+      </TouchableWithoutFeedback>
     );
   };
 
   return (
     <>
-      <Text h4 style={{ marginLeft: 16 }}>
-        {title}
-      </Text>
+      <Text style={styles.title}>{title}</Text>
       <View style={{ height: 200, marginVertical: 8 }}>
         <Carousel
           layout={'default'}
@@ -65,7 +71,13 @@ const ReceiptContainer: React.FC<Props> = ({ title, receipts }) => {
 export default ReceiptContainer;
 
 const styles = StyleSheet.create({
-  title: {},
+  title: {
+    fontFamily: 'Share Tech',
+    fontSize: 24,
+    marginLeft: 8,
+    marginTop: 8,
+    marginBottom: 8
+  },
   receiptContainer: {
     padding: 0,
     margin: 0,

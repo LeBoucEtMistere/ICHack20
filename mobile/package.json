@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "gen:apk": "cd android && ./gradlew assembleRelease",
     "a:devmenu": "adb shell input keyevent 82",
     "android": "react-native run-android",
     "a:ben": "react-native run-android --variant=release",
@@ -10,6 +11,7 @@
     "ios": "react-native run-ios",
     "ios:toby": "react-native run-ios --device \"Toby's iPhone\"",
     "ios:arthur": "react-native run-ios --device \"iPhone de Arthur\"",
+    "ios:sacha": "react-native run-ios --device \"iPhone de Sacha\"",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },

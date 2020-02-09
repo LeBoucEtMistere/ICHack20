@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "254664784940",
+    "firebase_url": "https://vegetable-early.firebaseio.com",
+    "project_id": "vegetable-early",
+    "storage_bucket": "vegetable-early.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254664784940:android:a1c53b63f5e900f6366589",
+        "android_client_info": {
+          "package_name": "uk.orth.vegetable_early"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254664784940-5ohrl17e5n6l50h2p66jpsi0b8sbtcf1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.orth.vegetable_early",
+            "certificate_hash": "c3d043775adea34dc98419606619e1c54c654209"
+          }
+        },
+        {
+          "client_id": "254664784940-tvjut3r97fal7300u7e4mdrmfmi0gda4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.orth.vegetable_early",
+            "certificate_hash": "d02b2c7dc21f308b17a9ee4be2b37437af146e94"
+          }
+        },
+        {
+          "client_id": "254664784940-fvguvda3lrkafj05lhoa5a7k1ikj5989.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNydxZcptmiaztl-QdVaw3Kgo358zQAbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254664784940-fvguvda3lrkafj05lhoa5a7k1ikj5989.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "254664784940-vcp7sl5sto504kvpq6tvkbqt15ecvmp4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "uk.orth.vegetableEarly"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

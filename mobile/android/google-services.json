@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "254664784940-5ohrl17e5n6l50h2p66jpsi0b8sbtcf1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uk.orth.vegetable_early",
+            "certificate_hash": "c3d043775adea34dc98419606619e1c54c654209"
+          }
+        },
+        {
           "client_id": "254664784940-tvjut3r97fal7300u7e4mdrmfmi0gda4.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -38,6 +46,13 @@
             {
               "client_id": "254664784940-fvguvda3lrkafj05lhoa5a7k1ikj5989.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "254664784940-vcp7sl5sto504kvpq6tvkbqt15ecvmp4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "uk.orth.vegetableEarly"
+              }
             }
           ]
         }

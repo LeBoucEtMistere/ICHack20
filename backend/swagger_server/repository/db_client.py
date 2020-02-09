@@ -1,13 +1,9 @@
-import firebase_admin
-from firebase_admin import credentials
 from firebase_admin import firestore
 from datetime import datetime
 from swagger_server.service.ocr import process_image
 import os
 
 
-cred = credentials.Certificate("swagger_server/firebase_key.json")
-firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 

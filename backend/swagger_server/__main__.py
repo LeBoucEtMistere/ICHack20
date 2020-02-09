@@ -4,6 +4,8 @@ import connexion
 
 from swagger_server import encoder
 from swagger_server.service.account_management import initialize_customers, initialize_current_accounts, get_customers, get_current_accounts
+from firebase_admin import credentials
+import firebase_admin
 
 
 def main():
@@ -14,8 +16,10 @@ def main():
 
 
 if __name__ == '__main__':
+
+    cred = credentials.Certificate("swagger_server/firebase_key.json")
+    firebase_admin.initialize_app(cred)
     # first check if customers and accounts exist => if not, then create
-    customers_array = []
     try:
         customers_array = get_customers(
             ['95191861583545753', '35294866593545759'])

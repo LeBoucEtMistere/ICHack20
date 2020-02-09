@@ -5,10 +5,35 @@ from flask import send_from_directory
 from swagger_server.repository.db_client import get_receipt
 from swagger_server.repository import db_client
 
+from google.cloud import storage
+storage_client = storage.Client()
+
+
+def upload_blob(bucket_name, source_file_str, destination_blob_name):
+    """Uploads a file to the bucket."""
+    # bucket_name = "your-bucket-name"
+    # source_file_name = "local/path/to/file"
+    # destination_blob_name = "storage-object-name"
+
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(destination_blob_name)
+    blob.make_public()
+
+    blob.upload_from_string(source_file_str)
+
+    print(
+        "File uploaded to {} publicly accessible at {}.".format(
+            destination_blob_name, blob.public_url
+        )
+    )
+
 
 def add_receipt_storage(request):
     file = request.files['file']
-    file_name = f'receipt-{uuid.uuid1()}.png'
+    #image_string = base64.b64encode(file.read())
+    file_name = f'receipt-{uuid.uuid1()}.jpg'
+    #upload_blob("receipts-uaqdd", image_string, file_name)
+
     file.save(os.path.join('/tmp/uploads', file_name))
     doc_id, doc_dict = db_client.add_receipt(file_name)
     return doc_id, doc_dict

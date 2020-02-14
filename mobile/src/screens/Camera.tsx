@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { RNCamera } from 'react-native-camera';
-import Config from 'react-native-config';
 import Axios from 'axios';
+import { backend_server_uri } from '../store/Endpoint';
 
 const Camera = ({ route, navigation }) => {
   const takePictureHandler = async (camera: RNCamera) => {
     const options = { quality: 0.5, base64: true };
     const data = await camera.takePictureAsync(options);
     console.log({ data });
-    const endpoint = Config.SERVER_URL + '/pics';
+    const endpoint = backend_server_uri + '/pics';
     console.log({ endpoint });
     try {
       const formData = new FormData();

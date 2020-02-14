@@ -208,6 +208,9 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+<<<<<<< HEAD
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
+=======
+>>>>>>> 39727f941be66df4de5b6464b29c53964f271231
 apply plugin: 'com.google.gms.google-services'

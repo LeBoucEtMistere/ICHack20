@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "gen:apk": "cd android && ./gradlew assembleRelease",
     "a:devmenu": "adb shell input keyevent 82",
-<<<<<<< HEAD
     "a": "npm run android",
     "a:dev": "ENVFILE=.env.dev react-native run-android",
     "android": "ENVFILE=.env.android.local react-native run-android",
@@ -19,17 +17,9 @@
     "ios:release-staging": "ENVFILE=.env.staging react-native run-ios --variant=release",
     "ios:release-production": "ENVFILE=.env.prod react-native run-ios --variant=release",
     "start": "react-native start",
-=======
-    "android": "react-native run-android",
-    "a:ben": "react-native run-android --variant=release",
-    "a:bundle": "cd android && ./gradlew bundleRelease",
-    "ios": "react-native run-ios",
-    "ios:toby": "react-native run-ios --device \"Toby's iPhone\"",
-    "ios:arthur": "react-native run-ios --device \"iPhone de Arthur\"",
-    "ios:sacha": "react-native run-ios --device \"iPhone de Sacha\"",
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "a:devmenu": "adb shell input keyevent 82"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",
@@ -37,6 +27,7 @@
     "@react-native-community/masked-view": "^0.1.6",
     "@react-native-firebase/app": "^6.2.0",
     "@react-native-firebase/auth": "^6.2.0",
+    "@react-native-firebase/messaging": "^6.3.1",
     "@react-navigation/bottom-tabs": "^5.0.0-alpha.37",
     "@react-navigation/native": "^5.0.0-alpha.27",
     "@react-navigation/stack": "^5.0.0-alpha.58",
@@ -44,10 +35,13 @@
     "axios": "^0.19.2",
     "install": "^0.13.0",
     "lottie-react-native": "^3.3.2",
+    "qs": "^6.9.1",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-camera": "^3.16.0",
+    "react-native-config": "^0.12.0",
     "react-native-elements": "^1.2.7",
+    "react-native-geolocation-service": "^3.1.0",
     "react-native-gesture-handler": "^1.5.3",
     "react-native-image-picker": "^2.2.0",
     "react-native-reanimated": "^1.6.0",

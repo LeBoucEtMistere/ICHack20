@@ -9,7 +9,7 @@ import ReceiptContainer from '../components/ReceiptContainer';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Axios from 'axios';
-import { backend_server_uri } from '../store/Endpoint';
+import Config from 'react-native-config';
 
 interface Props {}
 
@@ -36,9 +36,7 @@ interface Props {}
 const Home: React.FC<Props> = ({ navigation }) => {
   useEffect(() => {
     (async () => {
-      const endpoint = backend_server_uri + '/receipts';
-
-      console.log({ endpoint });
+      const endpoint = Config.SERVER_URL + '/receipts';
       const response = await Axios.get(endpoint);
       console.log({ response });
       setPendingReceipts(
@@ -47,30 +45,6 @@ const Home: React.FC<Props> = ({ navigation }) => {
       setProcessedReceipts(
         response.data.filter(item => item[1].validated === true)
       );
-<<<<<<< HEAD
-=======
-      setRefreshing(false);
-      setLoading(false);
-    })();
-  }, [refreshing]);
-
-  useEffect(() => {
-    (async () => {
-      const endpoint = backend_server_uri + '/receipts';
-      try {
-        const response = await Axios.get(endpoint);
-        console.log({ response });
-        setPendingReceipts(
-          response.data.filter(item => item[1].validated === false)
-        );
-        setProcessedReceipts(
-          response.data.filter(item => item[1].validated === true)
-        );
-      } catch (err) {
-        console.warn({ err });
-      }
-      setLoading(false);
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231
     })();
   }, []);
 

@@ -5,6 +5,8 @@ client = TMVaultClient('swagger_server/vault_client/data/vault-config.json')
 
 def reimburse(total, receipt_holder_id, receiver_id, message):
   # customers
+    if total == 0:
+        return
     employee = client.customers.get_customer(receipt_holder_id)
     company = client.customers.get_customer(receiver_id)
     # accounts

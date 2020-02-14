@@ -54,5 +54,6 @@ def validate_receipt(receiptId):
     total = validated_receipt_dict["total"]
     holder = validated_receipt_dict["receipt_holder"]
     receiver = validated_receipt_dict["receiver"]
-    tm.reimburse(total, holder, receiver, "Approved By HR")
+    if total != 0:
+        tm.reimburse(total, holder, receiver, "Approved By HR")
     return validated_receipt_dict

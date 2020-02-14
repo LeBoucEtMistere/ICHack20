@@ -90,6 +90,11 @@ def process_image(image_file):
             p = re.findall(price, tot)[0]
             tally2["total"] = float(p)
             break
+        elif re.match("(BALANCE DUE £[a-zA-Z0-9][a-zA-Z0-9]?\.[a-zA-Z0-9]+)", items[i]):
+            tot = items[i]
+            p = re.findall(price, tot)[0]
+            tally2["total"] = float(p)
+            break
         elif re.match("(Total [€$£]?[a-zA-Z0-9]+?\.[a-zA-Z0-9]+)", items[i]):
             tot = items[i]
             p = re.findall(price, tot)[0]

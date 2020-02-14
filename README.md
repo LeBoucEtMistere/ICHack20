@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./Logo.png" width="250" alt="Reimbursr Logo" />
+  <img src="./pics/Logo.png" width="250" alt="Reimbursr Logo" />
 </p>
 
 ## Description
@@ -16,6 +16,14 @@ Reimbursr provides lightning fast <b>automated</b> validations for your scanned 
     -  <b>IF</b> the total of the receipt is <= 15.0 GBP -> Perform the transaction from the Company to User immediately using <b>Vault</b>
     -  <b>ELSE IF</b> the total of the receipt > 15.0 GBP -> Wait for HR/Backoffice approval of the transaction from the Reimbursr Web App Client
 8. Send response to the user on the Reimbursr Mobile App 
+
+## Screenshots
+<img src="./pics/screen1.jpg" width="250" alt="screenshot 1" />
+<img src="./pics/screen2.jpg" width="250" alt="screenshot 2" />
+<img src="./pics/screen3.jpg" width="250" alt="screenshot 3" />
+<img src="./pics/screen4.jpg" width="250" alt="screenshot 4" />
+<img src="./pics/screen5.jpg" width="250" alt="screenshot 5" />
+<img src="./pics/screen6.jpg" width="250" alt="screenshot 6" />
 
 ## Technologies Used
 - Swagger

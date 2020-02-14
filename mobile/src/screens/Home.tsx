@@ -9,7 +9,7 @@ import ReceiptContainer from '../components/ReceiptContainer';
 import { Text } from 'react-native-elements';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Axios from 'axios';
-import Config from 'react-native-config';
+import { backend_server_uri } from '../store/Endpoint';
 
 interface Props {}
 
@@ -40,7 +40,9 @@ const Home: React.FC<Props> = ({ navigation }) => {
     setRefreshing(true);
 
     (async () => {
-      const endpoint = Config.SERVER_URL + '/receipts';
+      const endpoint = backend_server_uri + '/receipts';
+
+      console.log({ endpoint });
       const response = await Axios.get(endpoint);
       console.log({ response });
       setPendingReceipts(
@@ -56,7 +58,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
 
   useEffect(() => {
     (async () => {
-      const endpoint = Config.SERVER_URL + '/receipts';
+      const endpoint = backend_server_uri + '/receipts';
       try {
         const response = await Axios.get(endpoint);
         console.log({ response });

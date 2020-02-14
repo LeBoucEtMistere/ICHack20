@@ -36,7 +36,7 @@ def main():
 
 if __name__ == '__main__':
 
-    # first check if customers and accounts exist => if not, then create
+    # first check if customers and accounts exist = > if not, then create
     try:
         customers_array = get_customers(
             ['95191861583545753', '35294866593545759'])

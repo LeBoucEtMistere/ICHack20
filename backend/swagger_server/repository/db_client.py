@@ -28,6 +28,7 @@ def add_receipt(file_name):
         u'receiver': u'95191861583545753',
         u'total': tally2["total"],
         u'validated': True if float(tally2["total"]) <= 15 else False
+        # u'validated': False
     }
     doc_ref.set(doc_dict)
     if doc_dict["validated"] == True:

@@ -16,9 +16,6 @@ def process_image(image_file):
     response = client.text_detection(image=image)
     document = response.text_annotations[1:]
 
-    if document == []:
-        raise Error('Trying to submit empty image')
-
     items = []
     lines = {}
     tally = {}
@@ -50,62 +47,41 @@ def process_image(image_file):
         items[i] = items[i][1]
 
     orders = []
-    pattern = re.compile("([a-zA-Z0-9)?+/? [0-9]+\.[0-9][0-9])$")
+    pattern = re.compile(
+        "(([0-9]?[x]?[ ]?)([0-9a-zA-Z.']+[ ])+[$£€]?[0-9]+\.[0-9][0-9])")
+
+    total_regex = re.compile(
+        "(([0-9]+/[0-9]+)?[ ]?([0-9]+[:][0-9]+)?)?[ ]?((BALANCE DUE)?(Amount)?((Total)?(total)?(TOTAL)?[ ]?(Due)?(TO PAY)?))[ ]?[:]?[ ]?(([£$€]?)([0-9]+[.][0-9][0-9]))")
 
     for i in range(len(items)):
-        if pattern.match(items[i]) and not re.match("(TOTAL [a-zA-Z0-9]+?\.[a-zA-Z0-9]+)", items[i]) and not re.match("(TOTAL TO PAY [a-zA-Z0-9]+?\.[a-zA-Z0-9]+)", items[i]) and not re.match("(CASH [a-zA-Z0-9]+?\.[a-zA-Z0-9]+)", items[i]) and not re.match("(COUPON [a-zA-Z0-9]+?\.[a-zA-Z0-9]+)", items[i]) and not re.match("CHANGE ", items[i]) and not((re.match("(BALANCE DUE £?[0-9]+\.[0-9]+£?)", items[i]) and not re.match("((TOTAL)?(Total ) [€$£]?[0-9]+.[0-9]+£?)", items[i]))):
+        if pattern.match(items[i]) and not total_regex.match(items[i]) and not re.match("Total Tax", items[i]) and not re.match("Tax", items[i]) and not re.match("Sales Tax", items[i]) and not re.match("Visa", items[i]) and not re.match("Subtotal", items[i]):
             orders.append(items[i])
-#         if (re.match("(BALANCE DUE £?[0-9]+\.[0-9]+£?)", items[i]) or re.match("((TOTAL )?(Total ) £?[0-9]+\.[0-9]+£?)", items[i])):
-#             total = items[i]
-        if (re.findall("£?\$?€?", items[i])):
-            if items[i] == "$":
-                currency = "USD"
-            elif items[i] == "€":
-                currency = "EUR"
-            else:
-                currency = "GBP"
-        else:
-            currency = "UKN"
+
     price = "[0-9]+\.[0-9]+"
 
     for i in orders:
         p = re.findall(price, i)[0]
         tally[i.split(p)[0]] = float(p)
 
-#     if total !=-1:
-#         tally["total"] = re.findall(price,total)[0]
-    tally2["currency"] = currency
     tally2["store"] = first_line
-    tally2["total"] = 0
 
-    # find total in items
     for i in range(len(items)):
-        if re.match("(TOTAL TO PAY [€$£]?[a-zA-Z0-9]+?\.[a-zA-Z0-9]+)", items[i]):
-            tot = items[i]
-            p = re.findall(price, tot)[0]
-            tally2["total"] = float(p)
-            break
-        elif re.match("(BALANCE DUE [€$£]?[0-9]+\.[0-9]+£?)", items[i]):
-            tot = items[i]
-            p = re.findall(price, tot)[0]
-            tally2["total"] = float(p)
-            break
-        elif re.match("(BALANCE DUE £[a-zA-Z0-9][a-zA-Z0-9]?\.[a-zA-Z0-9]+)", items[i]):
-            tot = items[i]
-            p = re.findall(price, tot)[0]
-            tally2["total"] = float(p)
-            break
-        elif re.match("(Total [€$£]?[a-zA-Z0-9]+?\.[a-zA-Z0-9]+)", items[i]):
-            tot = items[i]
-            p = re.findall(price, tot)[0]
-            tally2["total"] = float(p)
-            break
-        elif re.match("(TOTAL [€$£]?[a-zA-Z0-9]+?\.[a-zA-Z0-9]+)", items[i]):
+        if "$" in items[i]:
+            currency = "USD"
+        elif "€" in items[i]:
+            currency = "EUR"
+        elif "£" in items[i]:
+            currency = "GBP"
+        else:
+            currency = "UKN"
+
+        if total_regex.match(items[i]) and not re.match("[$]?[0-9]+\.[0-9][0-9]", items[i]):
             tot = items[i]
             p = re.findall(price, tot)[0]
             tally2["total"] = float(p)
             break
         else:
             tot = -1
+    tally2["currency"] = currency
 
     return tally, tally2

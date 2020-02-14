@@ -395,11 +395,12 @@ export default {
   },
   mounted: function () {
     axios
-      .get('http://3d743c7c.ngrok.io/ICHack/ICHack20/1.0.0/receipts')
+      .get('https://046e2e9f.ngrok.io/ICHack/ICHack20/1.0.0/receipts')
       .then((response) => {
         this.get_receipts(response.data)
       }).catch((err) => {
-        this.get_receipts(debugData)
+        console.log(err)
+        // this.get_receipts(debugData)
       })
   },
   computed: {
@@ -410,7 +411,7 @@ export default {
   methods: {
     validate_receipt (id) {
       axios
-      .put('http://3d743c7c.ngrok.io/ICHack/ICHack20/1.0.0/validateReceipt/' + id)
+      .put('https://046e2e9f.ngrok.io/ICHack/ICHack20/1.0.0/validateReceipt/' + id)
       .then((response) => {
         console.log(response)
       }).catch((err) => {

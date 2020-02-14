@@ -18,8 +18,7 @@
     "ios:release-production": "ENVFILE=.env.prod react-native run-ios --variant=release",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "a:devmenu": "adb shell input keyevent 82"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",
@@ -41,7 +40,6 @@
     "react-native-camera": "^3.16.0",
     "react-native-config": "^0.12.0",
     "react-native-elements": "^1.2.7",
-    "react-native-geolocation-service": "^3.1.0",
     "react-native-gesture-handler": "^1.5.3",
     "react-native-image-picker": "^2.2.0",
     "react-native-reanimated": "^1.6.0",

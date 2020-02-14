@@ -10,7 +10,7 @@
               a.card(v-for="(receipt, key) in receipts" :key="key" v-show="receipt.new" v-bind:class="[selected === key ? openCard : '']")
                 .card_truncated
                   .card-left
-                    .name Donald Trump
+                    .name John Wick
                     .shop {{receipt.name}}
                     .amount £{{receipt.amount}}
                     .date {{receipt.date}}
@@ -26,7 +26,7 @@
               a.card(v-for="(receipt, key) in receipts"  v-show="receipt.new != true" v-bind:class="[selected === key ? openCard : '']")
                 .card_truncated
                   .card-left
-                    .name Donald Trump
+                    .name John Wick
                     .shop {{receipt.name}}
                     .amount £{{receipt.amount}}
                     .date {{receipt.date}}

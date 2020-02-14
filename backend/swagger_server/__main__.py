@@ -4,8 +4,6 @@ import connexion
 
 from swagger_server import encoder
 from swagger_server.service.account_management import initialize_customers, initialize_current_accounts, get_customers, get_current_accounts
-<<<<<<< HEAD
-=======
 from firebase_admin import credentials
 import firebase_admin
 from flask import request
@@ -29,7 +27,6 @@ CORS(app.app)
 #         if headers:
 #             response.headers['Access-Control-Allow-Headers'] = headers
 #     return response
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231
 
 
 def main():
@@ -40,13 +37,8 @@ def main():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-    # first check if customers and accounts exist => if not, then create
-    customers_array = []
-=======
 
     # first check if customers and accounts exist = > if not, then create
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231
     try:
         customers_array = get_customers(
             ['95191861583545753', '35294866593545759'])

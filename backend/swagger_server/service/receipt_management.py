@@ -24,9 +24,6 @@ def get_all_receipts():
 
 
 def validate_receipt(receiptId):
-<<<<<<< HEAD
-    return db_client.validate_receipt(receiptId)
-=======
     validated_receipt_dict = db_client.validate_receipt(receiptId)
     total = validated_receipt_dict["total"]
     holder = validated_receipt_dict["receipt_holder"]
@@ -34,4 +31,3 @@ def validate_receipt(receiptId):
     if total != 0:
         tm.reimburse(total, holder, receiver, "Approved By HR")
     return validated_receipt_dict
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231

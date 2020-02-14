@@ -47,25 +47,6 @@ def process_image(image_file):
         items[i] = items[i][1]
 
     orders = []
-<<<<<<< HEAD
-    pattern = re.compile("([a-zA-Z0-9)/?+ [0-9]+.[0-9][0-9])$")
-
-    for i in range(len(items)):
-        if pattern.match(items[i]) and not re.match("CHANGE", items[i]) and not((re.match("(BALANCE DUE £?[0-9]+.[0-9]+£?)", items[i]) or re.match("((TOTAL)?(Total) £?[0-9]+.[0-9]+£?)", items[i]))):
-            orders.append(items[i])
-        if (re.match("(BALANCE DUE £?[0-9]+.[0-9]+£?)", items[i]) or re.match("((TOTAL)?(Total) £?[0-9]+.[0-9]+£?)", items[i])):
-            total = items[i]
-        if (re.findall("£?\$?€?", items[i])):
-            if items[i] == "$":
-                currency = "USD"
-            elif items[i] == "€":
-                currency = "EUR"
-            else:
-                currency = "GBP"
-        else:
-            currency = "UKN"
-    price = "[0-9]+.[0-9]+"
-=======
     pattern = re.compile(
         "(([0-9]?[x]?[ ]?)([0-9a-zA-Z.']+[ ])+[$£€]?[0-9]+\.[0-9][0-9])")
 
@@ -77,19 +58,10 @@ def process_image(image_file):
             orders.append(items[i])
 
     price = "[0-9]+\.[0-9]+"
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231
 
     for i in orders:
         p = re.findall(price, i)[0]
         tally[i.split(p)[0]] = float(p)
-<<<<<<< HEAD
-    if total != -1:
-        tally2["total"] = re.findall(price, total)[0]
-    else:
-        tally2["total"] = 0
-    tally2["currency"] = currency
-    tally2["store"] = first_line
-=======
 
     tally2["store"] = first_line
 
@@ -111,6 +83,5 @@ def process_image(image_file):
         else:
             tot = -1
     tally2["currency"] = currency
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231
 
     return tally, tally2

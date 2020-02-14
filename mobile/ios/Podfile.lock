@@ -284,11 +284,8 @@ PODS:
     - React
   - react-native-camera/RN (3.16.0):
     - React
-<<<<<<< HEAD
   - react-native-config (0.12.0):
     - React
-=======
->>>>>>> ae70e3f... merged
   - react-native-image-picker (2.2.0):
     - React
   - react-native-safe-area-context (0.6.2):
@@ -374,10 +371,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-camera (from `../node_modules/react-native-camera`)
-<<<<<<< HEAD
   - react-native-config (from `../node_modules/react-native-config`)
-=======
->>>>>>> ae70e3f... merged
   - react-native-image-picker (from `../node_modules/react-native-image-picker`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
@@ -458,11 +452,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-camera:
     :path: "../node_modules/react-native-camera"
-<<<<<<< HEAD
   react-native-config:
     :path: "../node_modules/react-native-config"
-=======
->>>>>>> ae70e3f... merged
   react-native-image-picker:
     :path: "../node_modules/react-native-image-picker"
   react-native-safe-area-context:
@@ -546,10 +537,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
   react-native-camera: 72d27f64745bfca589cd265041f4f09cc46ed155
-<<<<<<< HEAD
   react-native-config: f2c2ae45625a068c35681a16b9bfb1ca58b0adc7
-=======
->>>>>>> ae70e3f... merged
   react-native-image-picker: d7ba8117e782534adbed4581931f2f9ec1db3704
   react-native-safe-area-context: a1d322930b8c5d04ebeb77cc47cc97575ad27203
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
@@ -574,10 +562,6 @@ SPEC CHECKSUMS:
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
-<<<<<<< HEAD
 PODFILE CHECKSUM: 7391372e292d2b21dd36f43e2c7bb227cb750b5e
-=======
-PODFILE CHECKSUM: c93f895a3e4e2e719b3d909be135178e95502fda
->>>>>>> ae70e3f... merged
 
 COCOAPODS: 1.8.4

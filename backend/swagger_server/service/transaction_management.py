@@ -3,10 +3,6 @@ from swagger_server.vault_client.py_tm_vault_client.tmvault import TMVaultClient
 client = TMVaultClient('swagger_server/vault_client/data/vault-config.json')
 
 
-<<<<<<< HEAD
-def reimburse():
-    return
-=======
 def reimburse(total, receipt_holder_id, receiver_id, message):
   # customers
     if total == 0:
@@ -39,4 +35,3 @@ def reimburse(total, receipt_holder_id, receiver_id, message):
         "reference": message
     }
     return transaction
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231

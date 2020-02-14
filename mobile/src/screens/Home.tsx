@@ -47,30 +47,6 @@ const Home: React.FC<Props> = ({ navigation }) => {
       setProcessedReceipts(
         response.data.filter(item => item[1].validated === true)
       );
-<<<<<<< HEAD
-=======
-      setRefreshing(false);
-      setLoading(false);
-    })();
-  }, [refreshing]);
-
-  useEffect(() => {
-    (async () => {
-      const endpoint = backend_server_uri + '/receipts';
-      try {
-        const response = await Axios.get(endpoint);
-        console.log({ response });
-        setPendingReceipts(
-          response.data.filter(item => item[1].validated === false)
-        );
-        setProcessedReceipts(
-          response.data.filter(item => item[1].validated === true)
-        );
-      } catch (err) {
-        console.warn({ err });
-      }
-      setLoading(false);
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231
     })();
   }, []);
 

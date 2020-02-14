@@ -30,12 +30,8 @@ def add_receipt(file_name):
         u'receipt_holder': u'35294866593545759',
         u'receiver': u'95191861583545753',
         u'total': tally2["total"],
-<<<<<<< HEAD
-        u'validated': False
-=======
         u'validated': True if float(tally2["total"]) <= 15 else False
         # u'validated': False
->>>>>>> 39727f941be66df4de5b6464b29c53964f271231
     }
     doc_ref.set(doc_dict)
     return doc_ref.id, doc_dict

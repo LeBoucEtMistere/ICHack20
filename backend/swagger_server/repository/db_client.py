@@ -7,7 +7,6 @@ import os
 
 
 cred = credentials.Certificate("swagger_server/firebase_key.json")
-firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 
@@ -51,3 +50,4 @@ def get_all_receipts():
 def validate_receipt(receipt_id):
     doc_ref = db.collection(u'receipts').document(f'{receipt_id}')
     doc_ref.update({"validated": True})
+    return doc_ref.get().to_dict()
